@@ -93,9 +93,10 @@ dependencies {
     implementation(libs.kotlinx.datetime)
 
     // JetBrains Koog 1.3.0 Orchestrator + SkillsDiscovery
+    // Note: koog.agents transitively brings in io.github.oshai:kotlin-logging-android-debug:8.0.01;
+    // do not add kotlin-logging-jvm to avoid duplicate class collisions during APK packaging.
     implementation(libs.koog.agents)
     implementation(libs.koog.skills)
-    implementation(libs.kotlin.logging)
     implementation(libs.slf4j.android)
 
     // Google AI Edge: LiteRT-LM 0.18.0 & LiteRT 2.3.0 CompiledModel
