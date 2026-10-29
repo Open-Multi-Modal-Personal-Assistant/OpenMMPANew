@@ -4,6 +4,14 @@ Rearchitecture of the legacy cross-platform Flutter **OpenMMPA** assistant into 
 
 ---
 
+## Documentation
+
+* **[Architecture Specification](docs/ARCHITECTURE.md):** In-depth technical architecture covering the 4 GB LPDDR memory topology, LiteRT-LM runtime, ObjectBox 6 + AppSearch hybrid RRF vault, System-1 decision engine, Prompt Injection Shield, Koog agent harness, 3-tier health bridge, and Firebase AI Logic cloud tier.
+* **[Getting Started & User Manual](docs/USER_GUIDE.md):** Complete guide for installing, debugging over Wi-Fi ADB, sideloading LiteRT-LM models, navigating the 4-card AMOLED deck, invoking watch skills, and developer desktop tools.
+* **[Architecture Research Conversation Log](research/Architecture_Conversation_Log.md):** Detailed chronological decision ledger and deep research synthesis.
+
+---
+
 ## Architectural Highlights
 
 | Layer | Legacy OpenMMPA (Flutter) | WristMind (`ai.wristmind.app`) |
