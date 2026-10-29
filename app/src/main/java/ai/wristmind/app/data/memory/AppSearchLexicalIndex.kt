@@ -60,7 +60,7 @@ class AppSearchLexicalIndex(
             }
 
             val schemaRequest = SetSchemaRequest.Builder()
-                .addDocumentClasses(AppSearchMemoryDocument::class.java)
+                .addSchemas(AppSearchMemoryDocument.SCHEMA)
                 .setForceOverride(true)
                 .build()
             openedSession.setSchemaAsync(schemaRequest).get()
@@ -83,7 +83,7 @@ class AppSearchLexicalIndex(
                 creationTimestampMillis = entity.timestampMillis
             )
             val request = PutDocumentsRequest.Builder()
-                .addDocuments(doc)
+                .addGenericDocuments(doc.toGenericDocument())
                 .build()
             activeSession.putAsync(request).get()
         } catch (t: Throwable) {
@@ -115,6 +115,7 @@ class AppSearchLexicalIndex(
             val activeSession = ensureInitialized()
             val specBuilder = SearchSpec.Builder()
                 .addFilterNamespaces(AppSearchMemoryDocument.NAMESPACE)
+                .addFilterSchemas(AppSearchMemoryDocument.SCHEMA_TYPE)
                 .setRankingStrategy(SearchSpec.RANKING_STRATEGY_RELEVANCE_SCORE)
                 .setTermMatch(SearchSpec.TERM_MATCH_PREFIX)
                 .setResultCountPerPage(maxResults)
@@ -130,9 +131,7 @@ class AppSearchLexicalIndex(
             activeSession.search(queryExpr, specBuilder.build()).use { results ->
                 val page = results.nextPageAsync.get()
                 for (result in page) {
-                    val doc = result.genericDocument.toDocumentClass(
-                        AppSearchMemoryDocument::class.java
-                    )
+                    val doc = AppSearchMemoryDocument.fromGenericDocument(result.genericDocument)
                     hits += HybridSearchMath.LexicalHit(
                         objectBoxId = doc.objectBoxId,
                         bm25fScore = result.rankingSignal

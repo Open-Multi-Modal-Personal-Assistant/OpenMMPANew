@@ -113,7 +113,6 @@ dependencies {
     implementation(libs.androidx.appsearch)
     implementation(libs.androidx.appsearch.platform.storage)
     implementation(libs.androidx.appsearch.local.storage)
-    ksp(libs.androidx.appsearch.compiler)
 
     implementation(libs.androidx.appfunctions)
     ksp(libs.androidx.appfunctions.compiler)
