@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppFunctionAppMetadata xmlns:appfn="http://schemas.android.com/apk/androidx.appfunctions"
+    appfn:description="This app stores and retrieves multimodal personal memories (notes, OCR captures, photos, and voice memos) on-device using hybrid BM25F and 256d vector search, and reads Full Android Watch (FAW) health vitals via Better Health Tracker / TraX.
+
+    Operational Patterns:
+    - Call 'searchMemories' to retrieve grounded personal facts, visual notes, or saved reminders before answering personal user questions.
+    - Call 'saveMemoryNote' to persist new personal facts, parking locations, codes, or reminders directly into the local hybrid memory vault.
+    - Call 'readWristVitals' to query heart rate (BPM), blood oxygen (SpO2 %), steps, and calories from Better Health Tracker / TraX or raw FAW watch sensors.
+
+    Constraints:
+    - Memory text content is limited to 4000 characters and screened by the local prompt-injection shield before indexing.
+    - Search results return at most 10 ranked chunks per call."
+    appfn:displayDescription="@string/app_functions_display_description" />
